@@ -12,7 +12,7 @@ Este repositorio contiene el desarrollo de un sistema de energía renovable que 
 - 📌 Se define la funcionalidad en un **diagrama de caja negra**.
 - 📌 Se elabora un **diagrama de flujo** del sistema.
 
-![Diagrama de flujo](/Lab2/Diagramas/DIAGRAMA_DE_FLUJO_PROYECTO.png)
+![Diagrama de flujo](./Lab2/Diagramas/DIAGRAMA_DE_FLUJO_PROYECTO.png)
 
 Este diagrama de flujo representa un proceso de control continuo basado en condiciones lógicas, donde cuatro entradas digitales (IO1, IO2, IO3, IO4) determinan el estado de cinco salidas (Q01 - Q05). Cada entrada activa o desactiva salidas específicas, y algunas salidas dependen del estado de otras, creando una lógica secuencial y condicional. Como el flujo regresa constantemente a evaluar las condiciones sin alcanzar un estado de finalización, se trata de un proceso cíclico o infinito.
 - 📌 Se define la **tabla de verdad** basada en las condiciones de operación.
@@ -20,7 +20,7 @@ Este diagrama de flujo representa un proceso de control continuo basado en condi
 ### 🔹 2. Dominio Físico Inicial
 - 📌 Diseño del **circuito eléctrico** en **lenguaje Ladder**.
 
-![Diagrama lenguaje Ladder](/Lab2/Diagramas/Diagrama_LADDER.jpeg)
+![Diagrama lenguaje Ladder](./Lab2/Diagramas/Diagrama_LADDER.jpeg)
 
 ### 🔹 3. Simulación en Ladder  
 📌 **Validación del comportamiento en PLCSimulator**  
