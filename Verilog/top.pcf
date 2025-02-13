@@ -1,0 +1,16 @@
+# Opciones de configuración para port--pin
+# set_io [-nowarn] [-pullup yes|no] [-pullup_resistor 3P3K|6P8K|10K|100K] port pin
+
+#CONFIGURACION DE PINES
+set_io IO1 9 # BOTON
+set_io IO2 10 # RED
+set_io IO3 11 # BATERIAS
+set_io IO4 12 # Sensor Luz
+
+#SALIDAS
+set_io QO1 31 # ROJO
+set_io QO2 32 # VERDE
+set_io QO3 37 # BLANCO
+set_io QO4 38 # AZUl
+set_io QO5 34 # RELE 
+
