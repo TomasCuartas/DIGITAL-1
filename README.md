@@ -20,7 +20,7 @@ Este diagrama de flujo representa un proceso de control continuo basado en condi
 ### 🔹 2. Dominio Físico Inicial
 - 📌 Diseño del **circuito eléctrico** en **lenguaje Ladder**.
 
-![Diagrama lenguaje Ladder](./Lab2/Diagramas/Diagrama_LADDER.jpeg)
+![Diagrama lenguaje Ladder](./Diagramas/Diagrama_LADDER.jpeg)
 
 ### 🔹 3. Simulación en Ladder  
 📌 **Validación del comportamiento en PLCSimulator**  
@@ -30,21 +30,21 @@ Este diagrama de flujo representa un proceso de control continuo basado en condi
 #### 🏠 3.1. Sin fuentes de energía disponibles  
 Ningún sensor detecta una fuente de energía activa, por lo que **Q01** indica que la casa no está energizada.  
 
-![Simulación 1](/Lab2/Simulaciones/Simulacion%20LADDER%201.jpeg)  
+![Simulación 1](./Simulaciones/Simulacion%20LADDER%201.jpeg)  
 
 ---
 
 #### ☀️ 3.2. Energización con luz solar directa  
 La casa recibe energía únicamente de la luz solar. **Q01** permanecerá inactivo hasta que alguna fuente de energía se reactive o se presione el botón de emergencia (**I01**).  
 
-![Simulación 2](/Lab2/Simulaciones/Simulacion%20LADDER%202.jpeg)  
+![Simulación 2](./Simulaciones/Simulacion%20LADDER%202.jpeg)  
 
 ---
 
 #### 🔋 3.3. Energización con baterías cargadas por luz solar  
 **Q05** (el conmutador) se activa cuando la casa es alimentada por luz solar directa o por baterías cargadas con energía solar. Este indicador permite visualizar cuándo se están utilizando los paneles solares o las baterías como fuente de energía.  
 
-![Simulación 3](/Lab2/Simulaciones/Simulacion%20LADDER%203.jpeg)  
+![Simulación 3](./Simulaciones/Simulacion%20LADDER%203.jpeg)  
 
 ---
 
