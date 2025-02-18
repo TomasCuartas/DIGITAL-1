@@ -10,17 +10,36 @@ Este repositorio contiene el desarrollo de un sistema de energía renovable que 
 ## 🚀 Desarrollo del Proyecto
 ### 🔹 1. Dominio Comportamental
 - 📌 Se define la funcionalidad en un **diagrama de caja negra**.
+
+![Diagrama Caja negra](Diagramas/CAJA_NEGRA.png)
+
+#### I01 Boton de paro de emergencia.
+#### I02 Sensor de disponibilidad de Red electrica.
+#### I03 Sensor de carga en Baterias.
+#### I04 Sensor de Luz solar.
+
+#### Q01 Indicador Casa desenergizada.
+#### Q02 Indicador red electrica disponible .
+#### Q03 Indicador carga baterias.
+#### Q04 Indicador radiacion solar .
+#### Q05 Conmutador entre fuentes de energia.
+
+
 - 📌 Se elabora un **diagrama de flujo** del sistema.
 
-![Diagrama de flujo](/Lab2/Diagramas/DIAGRAMA_DE_FLUJO_PROYECTO.png)
+![Diagrama de flujo](Diagramas/DIAGRAMA_DE_FLUJO_PROYECTO.png)
 
 Este diagrama de flujo representa un proceso de control continuo basado en condiciones lógicas, donde cuatro entradas digitales (IO1, IO2, IO3, IO4) determinan el estado de cinco salidas (Q01 - Q05). Cada entrada activa o desactiva salidas específicas, y algunas salidas dependen del estado de otras, creando una lógica secuencial y condicional. Como el flujo regresa constantemente a evaluar las condiciones sin alcanzar un estado de finalización, se trata de un proceso cíclico o infinito.
+
+
 - 📌 Se define la **tabla de verdad** basada en las condiciones de operación.
+
+![Tabla de Verdad propuesta](Diagramas/Tabla_verdad.png)
 
 ### 🔹 2. Dominio Físico Inicial
 - 📌 Diseño del **circuito eléctrico** en **lenguaje Ladder**.
 
-![Diagrama lenguaje Ladder](/Lab2/Diagramas/Diagrama_LADDER.jpeg)
+![Diagrama lenguaje Ladder](Diagramas/Diagrama_LADDER.jpeg)
 
 ### 🔹 3. Simulación en Ladder  
 📌 **Validación del comportamiento en PLCSimulator**  
@@ -30,63 +49,63 @@ Este diagrama de flujo representa un proceso de control continuo basado en condi
 #### 🏠 3.1. Sin fuentes de energía disponibles  
 Ningún sensor detecta una fuente de energía activa, por lo que **Q01** indica que la casa no está energizada.  
 
-![Simulación 1](/Lab2/Simulaciones/Simulacion%20LADDER%201.jpeg)  
+![Simulación 1](Simulaciones/Simulacion%20LADDER%201.jpeg)  
 
 ---
 
 #### ☀️ 3.2. Energización con luz solar directa  
 La casa recibe energía únicamente de la luz solar. **Q01** permanecerá inactivo hasta que alguna fuente de energía se reactive o se presione el botón de emergencia (**I01**).  
 
-![Simulación 2](/Lab2/Simulaciones/Simulacion%20LADDER%202.jpeg)  
+![Simulación 2](Simulaciones/Simulacion%20LADDER%202.jpeg)  
 
 ---
 
 #### 🔋 3.3. Energización con baterías cargadas por luz solar  
 **Q05** (el conmutador) se activa cuando la casa es alimentada por luz solar directa o por baterías cargadas con energía solar. Este indicador permite visualizar cuándo se están utilizando los paneles solares o las baterías como fuente de energía.  
 
-![Simulación 3](/Lab2/Simulaciones/Simulacion%20LADDER%203.jpeg)  
+![Simulación 3](Simulaciones/Simulacion%20LADDER%203.jpeg)  
 
 ---
 
 #### 🔋☀️ 3.4. Disponibilidad de luz solar y baterías cargadas  
 Se detecta la presencia simultánea de luz solar y baterías cargadas, lo que permite alimentar la casa con estas fuentes de energía.  
 
-![Simulación 4](/Lab2/Simulaciones/Simulacion%20LADDER%204.jpeg)  
+![Simulación 4](Simulaciones/Simulacion%20LADDER%204.jpeg)  
 
 ---
 
 #### ⚡ 3.5. Energización únicamente con la red eléctrica  
 La casa recibe energía exclusivamente de la red eléctrica. En este caso, **Q05** cambia de estado, permitiendo el paso de la energía de la red para alimentar la casa.  
 
-![Simulación 5](/Lab2/Simulaciones/Simulacion%20LADDER%205.jpeg)  
+![Simulación 5](Simulaciones/Simulacion%20LADDER%205.jpeg)  
 
 ---
 
 #### ⚡☀️ 3.6. Disponibilidad de red eléctrica y luz solar  
 Aunque la red eléctrica está disponible, el sistema prioriza el uso de energía solar para alimentar la casa, optimizando el consumo energético.  
 
-![Simulación 6](/Lab2/Simulaciones/Simulacion%20LADDER%206.jpeg)  
+![Simulación 6](Simulaciones/Simulacion%20LADDER%206.jpeg)  
 
 ---
 
 #### 🔋⚡ 3.7. Disponibilidad de energía solar almacenada en baterías y red eléctrica  
 Dado que las baterías están cargadas con energía solar, el sistema continúa priorizando su uso antes de recurrir a la red eléctrica.  
 
-![Simulación 7](/Lab2/Simulaciones/Simulacion%20LADDER%207.jpeg)  
+![Simulación 7](Simulaciones/Simulacion%20LADDER%207.jpeg)  
 
 ---
 
 #### ☀️🔋⚡ 3.8. Disponibilidad simultánea de luz solar, baterías cargadas y red eléctrica  
 A pesar de contar con todas las fuentes de energía disponibles, el sistema sigue priorizando la energía solar para alimentar la casa, asegurando un mayor ahorro energético.  
 
-![Simulación 8](/Lab2/Simulaciones/Simulacion%20LADDER%208.jpeg)  
+![Simulación 8](Simulaciones/Simulacion%20LADDER%208.jpeg)  
 
 ---
 
 #### ❌ 3.9. Disponibilidad de todas las fuentes de energía con I01 activado  
 Aunque todas las fuentes de energía están disponibles (**Q02**, **Q03** y **Q04** activas), la casa no se energiza debido a que la entrada **I01** (energizador de la casa) está activada. No obstante, los indicadores y el conmutador siguen operando de acuerdo con la lógica establecida en los casos anteriores.  
 
-![Simulación 9](/Lab2/Simulaciones/Simulacion%20LADDER%209.jpeg)  
+![Simulación 9](Simulaciones/Simulacion%20LADDER%209.jpeg)  
 
 ---
 
@@ -99,13 +118,15 @@ Aunque todas las fuentes de energía están disponibles (**Q02**, **Q03** y **Q0
 ### 🔹 4. Dominio Estructural  
 📌 **Conversión a red de compuertas lógicas**  
 
-Siguiendo las instrucciones del documento proporcionado por el docente ([Notas del laboratorio](https://github.com/johnnycubides/digital-electronic-1-101/blob/main/labs/lab2/notas_annotated.pdf)), realizamos la conversión del dominio físico al estructural. Este proceso nos permitió modelar el sistema en el software **Digital**, utilizando compuertas lógicas para representar su funcionamiento.  
+Siguiendo las instrucciones del documento proporcionado por el docente ([Notas del laboratorio](https://github.com/johnnycubides/digital-electronic-1-101/blob/main/labs/lab2/notas_annotated.pdf)), realizamos la conversión del dominio físico al estructural. Este proceso nos permitió modelar el sistema en el software **Digital**, utilizando compuertas lógicas para representar su funcionamiento. 
+
+El archivo de con el diagrama se puede observar en ([Archivo Digital](Simulaciones/SimulacionDigital.dig))
 
 ---
 
 #### 🔌 4.1. Simulación en **Digital**  
 El siguiente diagrama muestra la implementación del sistema en el software **Digital**, verificando su correcto comportamiento en el dominio estructural.  
-![Representación en compuertas](/Lab2/Simulaciones/DIGITAL%20COMPUERTAS.png)  
+![Representación en compuertas](Simulaciones/DIGITAL%20COMPUERTAS.png)  
 
 ---
 
@@ -113,26 +134,26 @@ El siguiente diagrama muestra la implementación del sistema en el software **Di
 Para simplificar las expresiones lógicas y optimizar el diseño del sistema, realizamos la minimización mediante **Mapas de Karnaugh**:  
 
 1️⃣ **Mapa de Karnaugh para Q01**  
-![Mapa de Karnaugh Q01](/Lab2/Simulaciones/Mapa%204.png)  
+![Mapa de Karnaugh Q01](Simulaciones/Mapa%204.png)  
 
 2️⃣ **Mapa de Karnaugh para Q02**  
-![Mapa de Karnaugh Q02](/Lab2/Simulaciones/Mapa%201.png)  
+![Mapa de Karnaugh Q02](Simulaciones/Mapa%201.png)  
 
 3️⃣ **Mapa de Karnaugh para Q03**  
-![Mapa de Karnaugh Q03](/Lab2/Simulaciones/Mapa%202.png)  
+![Mapa de Karnaugh Q03](Simulaciones/Mapa%202.png)  
 
 4️⃣ **Mapa de Karnaugh para Q04**  
-![Mapa de Karnaugh Q04](/Lab2/Simulaciones/Mapa%203.png)  
+![Mapa de Karnaugh Q04](Simulaciones/Mapa%203.png)  
 
 5️⃣ **Mapa de Karnaugh para Q05**  
-![Mapa de Karnaugh Q05](/Lab2/Simulaciones/Mapa%205.png)  
+![Mapa de Karnaugh Q05](Simulaciones/Mapa%205.png)  
 
 ---
 
 #### 📊 4.3. Tabla de verdad verificada  
 La siguiente tabla de verdad representa el comportamiento esperado del sistema con base en la lógica estructural.  
 Se verificó la **tabla de verdad**, garantizando que la implementación es funcional y precisa.  
-![Tabla de verdad](/Lab2/Simulaciones/TABLA%20DE%20VERDAD.png)  
+![Tabla de verdad](Simulaciones/TABLA%20DE%20VERDAD.png)  
 
 ---
 
@@ -140,7 +161,7 @@ Se verificó la **tabla de verdad**, garantizando que la implementación es func
 
 Como alternativa de implementación, se realizó la conversión del sistema utilizando **compuertas NAND**, las cuales permiten diseñar cualquier circuito lógico minimizando el número de componentes.  
 
-![Representación con compuertas NAND](/Lab2/Simulaciones/Compuertas%20NAND.png)  
+![Representación con compuertas NAND](Simulaciones/Compuertas%20NAND.png)  
 
 ---
 
@@ -178,7 +199,7 @@ module top (
 endmodule 
 ```
 La siguiente imagen muestra el circuito lógico que será implementado en la FPGA:
-![Circuito FPGA](/Lab2/Diagramas/Diagrama%20compuertas%20FPGA.png)  
+![Circuito FPGA](Diagramas/Diagrama%20compuertas%20FPGA.png)  
 
 Se configuro el archivo de restricciones fisicas (`top.pcf`) en el cual se especifican los pines para las entradas y las salidas, este es el codigo utilizado:
 
@@ -206,7 +227,7 @@ Para la síntesis del diseño en la **FPGA BlackIce MX**, seguimos el procedimie
 📌 **Asignación de pines y conexiones**  
 
 Para la conexión del circuito, seguimos la distribución de pines mostrada en la siguiente imagen:  
-🖼️ ![Pinout FPGA](/Lab2/Verilog/blackice-mx-pinout.png)  
+🖼️ ![Pinout FPGA](Verilog/blackice-mx-pinout.png)  
 
 📌 **Componentes utilizados**  
 ✔️ **FPGA BlackIce MX**  
